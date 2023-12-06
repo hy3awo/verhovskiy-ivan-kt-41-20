@@ -1,8 +1,8 @@
-namespace verhovskiyivankt_41_20
+namespace VerhovskiyIvanKT_41_20
 {
     public class WeatherForecast
     {
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
 
         public int TemperatureC { get; set; }
 
