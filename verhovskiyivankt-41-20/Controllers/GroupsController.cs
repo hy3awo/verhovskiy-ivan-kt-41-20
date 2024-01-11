@@ -50,8 +50,21 @@ namespace VerhovskiyIvanKT_41_20.Controllers
         public async Task<IActionResult> AddGroupAsync(Group group, CancellationToken cancellationToken = default)
         {
             await _groupService.AddGroupAsync(group, cancellationToken);
+            //return Ok(group);
             return CreatedAtAction(nameof(AddGroupAsync), new { id = group.GroupId }, group);
         }
+        //[HttpPost("Add Groups")]
+        // public IActionResult CreateGroup([FromBody] Group group)
+        // {
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //   }
+
+        //   _context.Groups.Add(group);
+        //  _context.SaveChanges();
+        //  return Ok(group);
+        //}
 
         [HttpPut("Update group with id")]
         public async Task<IActionResult> UpdateGroupAsync(int id, Group group, CancellationToken cancellationToken = default)
@@ -75,18 +88,7 @@ namespace VerhovskiyIvanKT_41_20.Controllers
             await _groupService.DeleteGroupAsync(group, cancellationToken);
             return Ok(group);
         }
-        //[HttpPost("AddGroup", Name = "AddGroup")]
-       // public IActionResult CreateGroup([FromBody] Group group)
-       // {
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-         //   }
-
-         //   _context.Groups.Add(group);
-          //  _context.SaveChanges();
-          //  return Ok(group);
-        //}
+        
     }
 
 }

@@ -9,6 +9,12 @@ namespace VerhovskiyIvanKT_41_20.Database
         
         public DbSet<Group> Groups { get; set; }
         public DbSet<Student> Students { get; set; }
+
+        public GroupsDbContext()
+        {   
+            Database.EnsureDeleted();
+           // Database.EnsureCreated();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
@@ -18,7 +24,7 @@ namespace VerhovskiyIvanKT_41_20.Database
 
         public GroupsDbContext(DbContextOptions<GroupsDbContext> options) : base(options)
         {
-
+           // Database.EnsureDeleted();
         }
     }
     

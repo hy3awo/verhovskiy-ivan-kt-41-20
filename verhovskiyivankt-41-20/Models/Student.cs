@@ -15,8 +15,7 @@ namespace VerhovskiyIvanKT_41_20.Models
 
         public int? GroupId { get; set; }
 
-       
-
+        [Required]
         public Group? Group { get; set; }
     }
 }
