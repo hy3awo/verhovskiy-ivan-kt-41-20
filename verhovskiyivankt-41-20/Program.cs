@@ -3,6 +3,7 @@ using NLog.Web;
 using VerhovskiyIvanKT_41_20.Database;
 using Microsoft.EntityFrameworkCore;
 using VerhovskiyIvanKT_41_20.ServiceExtensions;
+using VerhovskiyIvanKT_41_20.Middlewares;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ try
     builder.Services.AddDbContext<GroupsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
     
     builder.Services.AddServices();
+    
 
     var app = builder.Build();
 
@@ -31,7 +33,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
     app.UseAuthorization();
 
     app.MapControllers();
