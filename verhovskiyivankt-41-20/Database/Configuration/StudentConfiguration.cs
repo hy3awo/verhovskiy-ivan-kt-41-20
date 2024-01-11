@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using VerhovskiyIvanKT_41_20.Models;
+using VerhovskiyIvanKT_41_20;
 
 namespace VerhovskiyIvanKT_41_20.Database.Configuration
 {
     public class StudentConfiguration : IEntityTypeConfiguration<Student>
     {
-        private const string TableName = "cd_student";
+        private const string TableName = "Students";
 
         public void Configure(EntityTypeBuilder<Student> builder)
         {   //Задаем первичный ключ
@@ -53,15 +54,10 @@ namespace VerhovskiyIvanKT_41_20.Database.Configuration
                 .HasColumnType("int")
                 .HasComment("id группы");
 
-            builder.Property(p => p.GroupName)
-                .IsRequired()
-                .HasColumnName("c_student_groupid")
-                .HasColumnType("int")
-                .HasComment("Идентификатор группы");
 
             builder.ToTable(TableName)
                 .HasOne(p => p.Group)
-                .WithMany()
+                .WithMany(a=>a.Students)
                 .HasForeignKey(p => p.GroupId)
                 .HasConstraintName("fk_f_group_id")
                 .OnDelete(DeleteBehavior.Cascade);

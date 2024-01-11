@@ -1,5 +1,8 @@
 using NLog;
 using NLog.Web;
+using VerhovskiyIvanKT_41_20.Database;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup()
@@ -14,6 +17,9 @@ try
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    builder.Services.AddDbContext<GroupsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
     var app = builder.Build();
 
