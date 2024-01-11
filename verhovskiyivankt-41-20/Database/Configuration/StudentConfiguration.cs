@@ -57,7 +57,7 @@ namespace VerhovskiyIvanKT_41_20.Database.Configuration
 
             builder.ToTable(TableName)
                 .HasOne(p => p.Group)
-                .WithMany(a=>a.Students)
+                .WithMany()
                 .HasForeignKey(p => p.GroupId)
                 .HasConstraintName("fk_f_group_id")
                 .OnDelete(DeleteBehavior.Cascade);

@@ -8,6 +8,8 @@ namespace VerhovskiyIvanKT_41_20.Models
         public int? GroupId { get; set; }
 
         public string? GroupName { get; set; }
-        public ICollection<Student>? Students { get; set; }
+
+       // public int?  StudentId { get; set; }
+       // public ICollection<Student>? Students { get; set; }
     }
 }
